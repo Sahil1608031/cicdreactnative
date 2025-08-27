@@ -46,3 +46,10 @@ jobs:
           echo "🧪 Running tests..."
           npm test
           echo "✅ Tests passed!"
+
+      - name: Run Android Build
+        run: |
+          echo "🧪 Building Android APK..."
+          cd android
+          ./gradlew assembleDebug
+          echo "✅ Android APK build successful!"
