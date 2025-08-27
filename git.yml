@@ -28,23 +28,12 @@ jobs:
           npm install
           echo "✅ Dependencies installed!"
 
-      - name: Run Prettier Fix
-        run: |
-          echo "🎨 Prettier fix started..."
-          npm run prettier:fix
-          echo "✅ Prettier fix completed!"
-
+  
       - name: Run Prettier Check
         run: |
           echo "🔍 Prettier check started..."
           npm run prettier:check
           echo "✅ Prettier check completed!"
-
-      - name: Re-add fixed files
-        run: |
-          echo "➕ Adding fixed files..."
-          git add .
-          echo "✅ Files re-added!"
 
       - name: Run ESLint Fix
         run: |
