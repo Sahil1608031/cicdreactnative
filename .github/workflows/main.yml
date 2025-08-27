@@ -20,6 +20,6 @@ jobs:
 
       - name: Prettier check
         run: |
-          - echo "📦 prettier checking..."
-          - npm run prettier:check
-          - echo "✅ prettier checked!" 
+           echo "📦 prettier checking..."
+           npm run prettier:check
+           echo "✅ prettier checked!" 
