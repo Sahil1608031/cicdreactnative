@@ -12,3 +12,30 @@ install_dependencies:
     - echo "📦 Installing dependencies..."
     - npm install
     - echo "✅ Dependencies installed!"
+
+prettier_check:
+  stage: prettier
+  image: node:20
+  script:
+    - echo "📦 prettier checking..."
+    - npm run prettier:check
+    - echo "✅ prettier checked!"
+
+eslint_check:
+  stage: eslint
+  image: node:20
+  script:
+    - echo "📦 Installing dependencies..."
+    - npm ci        # or npm install
+    - echo "📦 Running ESLint..."
+    - npm run lint:fix
+    - echo "✅ ESLint done!"   
+
+test_check:
+  stage: test
+  image: node:20
+  script:
+    - echo "📦 test checking..."
+    - npm ci 
+    - npm run test
+    - echo "✅ test checked!"      
