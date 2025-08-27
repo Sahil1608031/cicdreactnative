@@ -1,0 +1,59 @@
+name: React Native CI/CD
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          echo "📦 Installing dependencies..."
+          npm install
+          echo "✅ Dependencies installed!"
+
+      - name: Run Prettier Fix
+        run: |
+          echo "🎨 Prettier fix started..."
+          npm run prettier:fix
+          echo "✅ Prettier fix completed!"
+
+      - name: Run Prettier Check
+        run: |
+          echo "🔍 Prettier check started..."
+          npm run prettier:check
+          echo "✅ Prettier check completed!"
+
+      - name: Re-add fixed files
+        run: |
+          echo "➕ Adding fixed files..."
+          git add .
+          echo "✅ Files re-added!"
+
+      - name: Run ESLint Fix
+        run: |
+          echo "🛠 ESLint fix started..."
+          npm run lint:fix
+          echo "✅ ESLint fix completed!"
+
+      - name: Run Tests
+        run: |
+          echo "🧪 Running tests..."
+          npm test
+          echo "✅ Tests passed!"
