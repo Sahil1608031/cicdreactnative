@@ -28,3 +28,12 @@ eslint_check:
     - echo "📦 eslint checking..."
     - npm run lint:fix
     - echo "✅ eslint checked!"    
+
+test_check:
+  stage: test
+  image: node:20
+  script:
+    - echo "📦 test checking..."
+    - npm ci 
+    - npm run test
+    - echo "✅ test checked!"      

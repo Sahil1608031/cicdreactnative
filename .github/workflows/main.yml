@@ -28,4 +28,10 @@ jobs:
         run: |
            echo "📦 Eslint checking..."
            npm run lint:fix
-           echo "✅ Eslint checked!"      
+           echo "✅ Eslint checked!"    
+           
+      - name: Test check
+        run: |
+           echo "📦 test checking..."
+           npm run test
+           echo "✅ test checked!"         
