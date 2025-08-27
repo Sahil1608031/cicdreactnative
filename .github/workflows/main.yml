@@ -17,3 +17,9 @@ jobs:
           echo "📦 Installing dependencies..."
           npm install
           echo "✅ Dependencies installed!"
+
+      - name: Prettier check
+        run: |
+          - echo "📦 prettier checking..."
+          - npm run prettier:check
+          - echo "✅ prettier checked!" 
