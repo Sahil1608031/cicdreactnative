@@ -25,9 +25,11 @@ eslint_check:
   stage: eslint
   image: node:20
   script:
-    - echo "📦 eslint checking..."
+    - echo "📦 Installing dependencies..."
+    - npm ci        # or npm install
+    - echo "📦 Running ESLint..."
     - npm run lint:fix
-    - echo "✅ eslint checked!"    
+    - echo "✅ ESLint done!"   
 
 test_check:
   stage: test
