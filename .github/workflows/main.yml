@@ -23,3 +23,9 @@ jobs:
            echo "📦 prettier checking..."
            npm run prettier:check
            echo "✅ prettier checked!" 
+
+      - name: Eslint check
+        run: |
+           echo "📦 Eslint checking..."
+           npm run lint:fix
+           echo "✅ Eslint checked!"      

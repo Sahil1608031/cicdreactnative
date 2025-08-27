@@ -20,3 +20,11 @@ prettier_check:
     - echo "📦 prettier checking..."
     - npm run prettier:check
     - echo "✅ prettier checked!"
+
+eslint_check:
+  stage: eslint
+  image: node:20
+  script:
+    - echo "📦 eslint checking..."
+    - npm run lint:fix
+    - echo "✅ eslint checked!"    
