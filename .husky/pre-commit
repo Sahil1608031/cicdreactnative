@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running pre-commit checks..."
+
+npm run prettier:fix
+npm run prettier:check
+git add .
+npm run lint:fix
+npm run test
+
+echo "✅ Pre-commit checks passed!"

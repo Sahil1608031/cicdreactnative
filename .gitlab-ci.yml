@@ -1,0 +1,14 @@
+stages:
+  - install      # Install dependencies
+  - prettier     # Run Prettier Check
+  - eslint       # Run ESLint Fix
+  - test         # Run Tests
+  - build        # Build Android APK
+
+install_dependencies:
+  stage: install
+  image: node:20
+  script:
+    - echo "📦 Installing dependencies..."
+    - npm install
+    - echo "✅ Dependencies installed!"
