@@ -36,6 +36,7 @@ test_check:
   image: node:20
   script:
     - echo "📦 test checking..."
+    - npm ci      # or npm install
     - npm run test
     - echo "✅ test checked!"
 
