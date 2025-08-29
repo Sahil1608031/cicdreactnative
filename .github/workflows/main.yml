@@ -47,6 +47,10 @@ jobs:
           cd ..
           echo "✅ Debug APK built!"
           
+          echo "🔄 Renaming APK..."
+          mv android/app/build/outputs/apk/debug/app-debug.apk android/app/build/outputs/apk/debug/app_git-debug.apk
+          echo "✅ APK renamed to app_git-debug.apk"
+
           echo "📤 Uploading to Firebase App Distribution..."
           firebase appdistribution:distribute android/app/build/outputs/apk/debug/app_git-debug.apk \
             --app ${{ secrets.FIREBASE_APP_ID }} \

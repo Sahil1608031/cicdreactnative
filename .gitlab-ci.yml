@@ -42,7 +42,6 @@ test_check:
 
 build_android_check:
   stage: build_android
-  image: node:20
   image: reactnativecommunity/react-native-android
   before_script:
     - echo "Preparing Android environment..."
@@ -56,6 +55,9 @@ build_android_check:
     - echo "✅ Debug APK built!"
     - cd ..
     - echo "🚀 Uploading APK to Firebase App Distribution..."
+    - echo "🔄 Renaming APK..."
+    - mv android/app/build/outputs/apk/debug/app-debug.apk android/app/build/outputs/apk/debug/app_git_lab-debug.apk
+    - echo "✅ APK renamed to app_git_lab-debug.apk"
     - >
       firebase appdistribution:distribute android/app/build/outputs/apk/debug/app_git_lab-debug.apk
       --app ${FIREBASE_APP_ID}
