@@ -57,8 +57,9 @@ build_android_check:
     - cd ..
     - echo "🚀 Uploading APK to Firebase App Distribution..."
     - >
-      firebase appdistribution:distribute android/app/build/outputs/apk/debug/app-debug.apk
+      firebase appdistribution:distribute android/app/build/outputs/apk/debug/app_git_lab-debug.apk
       --app ${FIREBASE_APP_ID}
       --token ${FIREBASE_TOKEN}
+      --groups "TESTERS_REELBOOK"
     - echo "✅ APK uploaded to Firebase App Distribution!"
         
