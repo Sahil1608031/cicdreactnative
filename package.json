@@ -16,6 +16,7 @@
     "app_run": "npm run ios && npm run android"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^23.2.0",
     "@react-native/new-app-screen": "0.81.0",
     "react": "19.1.0",
     "react-native": "0.81.0",

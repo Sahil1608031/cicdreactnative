@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "169967680329",
+    "project_id": "reel-469303",
+    "storage_bucket": "reel-469303.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169967680329:android:dcc2ea9953820dd19a7898",
+        "android_client_info": {
+          "package_name": "com.cicdreactnative"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd1O-rQpbCFhu-u4s1Dbyy8j1VaDbR4H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169967680329:android:273a671476031a939a7898",
+        "android_client_info": {
+          "package_name": "com.reelbook"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd1O-rQpbCFhu-u4s1Dbyy8j1VaDbR4H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
