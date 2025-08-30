@@ -12,9 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Firebase Token
-        run: echo "FIREBASE_TOKEN=${{ secrets.FIREBASE_TOKEN }}" >> $GITHUB_ENV
-
       - name: Build & Distribute
         run: |
           echo "📦 Installing dependencies..."
@@ -37,5 +34,6 @@ jobs:
           echo "📤 Uploading to Firebase App Distribution..."
           firebase appdistribution:distribute app/build/outputs/apk/debug/app-debug.apk \
             --app ${{ secrets.FIREBASE_APP_ID }} \
-            --groups "testers"
+            --token ${{ secrets.FIREBASE_TOKEN }} \
+            --groups "TESTERS_REELBOOK"
           echo "✅ Uploaded to Firebase App Distribution!"
