@@ -30,12 +30,20 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        release {
-            storeFile file("cicdreactnative.keystore")
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
-        }
+       release {
+    storeFile file("cicdreactnative.keystore")
+
+    if (System.getenv("CI") != null) { // if running in CI/CD
+        storePassword System.getenv("RELEASE_STORE_PASSWORD")
+        keyAlias System.getenv("RELEASE_KEY_ALIAS")
+        keyPassword System.getenv("RELEASE_KEY_PASSWORD")
+    } else { // local build
+        storePassword RELEASE_STORE_PASSWORD
+        keyAlias RELEASE_KEY_ALIAS
+        keyPassword RELEASE_KEY_PASSWORD
+    }
+}
+
     }
 
     buildTypes {

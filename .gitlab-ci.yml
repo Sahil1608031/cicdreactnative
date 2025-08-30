@@ -1,38 +1,38 @@
-stages:
-  - build     
+# stages:
+#   - build     
 
-install_dependencies:
-  stage: build
-  image: node:20
-  image: reactnativecommunity/react-native-android
-  before_script:
-    - echo "Preparing Android environment..."
-    - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
-    - echo "$KEYSTORE_BASE64" | base64 --decode > android/app/cicdreactnative.keystore
-    - echo "📦 Installing dependencies..."
-    - npm ci
-    - npm install -g firebase-tools
-    - echo "✅ Dependencies installed!"
-  script:
-    - echo "📦 prettier checking..."
-    - npm run prettier:check
-    - echo "✅ prettier checked!"
-    - echo "📦 Installing dependencies..."
-    - echo "📦 Running ESLint..."
-    - npm run lint:fix
-    - echo "✅ ESLint done!"   
-    - echo "📦 test checking..."
-    - npm run test
-    - echo "✅ test checked!"
-    - echo "📦 Building Android Debug APK..."
-    - cd android
-    - ./gradlew assembleRelease
-    - echo "✅ Debug APK built!"
-    - cd ..
-    - echo "🚀 Uploading APK to Firebase App Distribution..."
-    - >
-      firebase appdistribution:distribute android/app/build/outputs/apk/release/app-release.apk
-      --app ${FIREBASE_APP_ID}
-      --token ${FIREBASE_TOKEN}
-      --groups "TESTERS_REELBOOK"
-    - echo "✅ APK uploaded to Firebase App Distribution!"      
+# install_dependencies:
+#   stage: build
+#   image: node:20
+#   image: reactnativecommunity/react-native-android
+#   before_script:
+#     - echo "Preparing Android environment..."
+#     - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+#     - echo "$KEYSTORE_BASE64" | base64 --decode > android/app/cicdreactnative.keystore
+#     - echo "📦 Installing dependencies..."
+#     - npm ci
+#     - npm install -g firebase-tools
+#     - echo "✅ Dependencies installed!"
+#   script:
+#     - echo "📦 prettier checking..."
+#     - npm run prettier:check
+#     - echo "✅ prettier checked!"
+#     - echo "📦 Installing dependencies..."
+#     - echo "📦 Running ESLint..."
+#     - npm run lint:fix
+#     - echo "✅ ESLint done!"   
+#     - echo "📦 test checking..."
+#     - npm run test
+#     - echo "✅ test checked!"
+#     - echo "📦 Building Android Debug APK..."
+#     - cd android
+#     - ./gradlew assembleRelease
+#     - echo "✅ Debug APK built!"
+#     - cd ..
+#     - echo "🚀 Uploading APK to Firebase App Distribution..."
+#     - >
+#       firebase appdistribution:distribute android/app/build/outputs/apk/release/app-release.apk
+#       --app ${FIREBASE_APP_ID}
+#       --token ${FIREBASE_TOKEN}
+#       --groups "TESTERS_REELBOOK"
+#     - echo "✅ APK uploaded to Firebase App Distribution!"      
