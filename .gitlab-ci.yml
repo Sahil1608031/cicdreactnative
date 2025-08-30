@@ -8,6 +8,7 @@ install_dependencies:
   before_script:
     - echo "Preparing Android environment..."
     - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+    - echo "$KEYSTORE_BASE64" | base64 --decode > android/app/cicdreactnative.keystore
     - echo "📦 Installing dependencies..."
     - npm ci
     - npm install -g firebase-tools

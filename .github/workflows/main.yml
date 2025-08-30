@@ -11,7 +11,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      - name: Setup release keystore
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > android/app/cicdreactnative.keystore
+          
       - name: Build & Distribute
         run: |
           echo "📦 Installing dependencies..."
