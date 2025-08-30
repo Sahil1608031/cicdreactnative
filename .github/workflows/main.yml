@@ -34,18 +34,18 @@ jobs:
       - name: 🛠️ Build iOS Archive
         run: |
           cd ios
-          xcodebuild -workspace AwesomeProject.xcworkspace \
-            -scheme AwesomeProject \
+          xcodebuild -workspace cicdreactnative.xcworkspace \
+            -scheme cicdreactnative \
             -sdk iphoneos \
             -configuration Release \
             archive \
-            -archivePath $PWD/build/AwesomeProject.xcarchive
+            -archivePath $PWD/build/cicdreactnative.xcarchive
 
       - name: 📦 Export IPA
         run: |
           cd ios
           xcodebuild -exportArchive \
-            -archivePath $PWD/build/AwesomeProject.xcarchive \
+            -archivePath $PWD/build/cicdreactnative.xcarchive \
             -exportPath $PWD/build/ipa \
             -exportOptionsPlist ExportOptions.plist
           ls -R $PWD/build/ipa
