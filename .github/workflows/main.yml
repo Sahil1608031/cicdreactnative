@@ -27,12 +27,14 @@ jobs:
           echo "📦 test checking..."
           npm run test
           echo "✅ test checked!"
-          echo "📦 Building Android Debug APK..."
+          echo "📦 Building Android release APK..."
           cd android
+           cd android
+          echo "📦 Building Release APK..."
           ./gradlew assembleRelease
-          echo "✅ Android Debug APK built!"
+          echo "✅ Release APK built!"
           echo "📤 Uploading to Firebase App Distribution..."
-          firebase appdistribution:distribute android/app/build/outputs/apk/release/app-release.apk \
+          firebase appdistribution:distribute app/build/outputs/apk/release/app-release.apk \
             --app ${{ secrets.FIREBASE_APP_ID }} \
             --token ${{ secrets.FIREBASE_TOKEN }} \
             --groups "TESTERS_REELBOOK"
