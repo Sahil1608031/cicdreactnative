@@ -8,30 +8,31 @@ install_dependencies:
   before_script:
     - echo "Preparing Android environment..."
     - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
-    - echo "$KEYSTORE_BASE64" | base64 --decode > android/app/cicdreactnative.keystore
     - echo "📦 Installing dependencies..."
     - npm ci
     - npm install -g firebase-tools
     - echo "✅ Dependencies installed!"
   variables:
     RELEASE_KEY_ALIAS: $RELEASE_KEY_ALIAS
-    RELEASE_STORE_PASSWORD: "${RELEASE_STORE_PASSWORD}#"
-    RELEASE_KEY_PASSWORD: "${RELEASE_KEY_PASSWORD}#"
+    RELEASE_STORE_PASSWORD: "${RELEASE_STORE_PASSWORD}"
+    RELEASE_KEY_PASSWORD: "${RELEASE_KEY_PASSWORD}"
   script:
     - echo "📦 prettier checking..."
     - npm run prettier:check
     - echo "✅ prettier checked!"
-    - echo "📦 Installing dependencies..."
     - echo "📦 Running ESLint..."
     - npm run lint:fix
     - echo "✅ ESLint done!"   
     - echo "📦 test checking..."
     - npm run test
     - echo "✅ test checked!"
-    - echo "📦 Building Android Debug APK..."
+    - echo "📦 Building Android Release APK..."
+    - export RELEASE_KEY_ALIAS="$RELEASE_KEY_ALIAS"
+    - export RELEASE_STORE_PASSWORD="${RELEASE_STORE_PASSWORD}"
+    - export RELEASE_KEY_PASSWORD="${RELEASE_KEY_PASSWORD}"
     - cd android
     - ./gradlew assembleRelease
-    - echo "✅ Debug APK built!"
+    - echo "✅ Release APK built!"
     - cd ..
     - echo "🚀 Uploading APK to Firebase App Distribution..."
     - >
