@@ -31,29 +31,31 @@ jobs:
           gem install cocoapods fastlane
           cd ios && pod install --repo-update && cd ..
 
-      - name: 🛠️ Build iOS Archive
+      - name: 🛠️ Build iOS Archive (no signing)
         run: |
           cd ios
           xcodebuild -workspace cicdreactnative.xcworkspace \
             -scheme cicdreactnative \
             -sdk iphoneos \
             -configuration Release \
+            CODE_SIGNING_ALLOWED=NO \
             archive \
             -archivePath $PWD/build/cicdreactnative.xcarchive
 
-      - name: 📦 Export IPA
-        run: |
-          cd ios
-          xcodebuild -exportArchive \
-            -archivePath $PWD/build/cicdreactnative.xcarchive \
-            -exportPath $PWD/build/ipa \
-            -exportOptionsPlist ExportOptions.plist
-          ls -R $PWD/build/ipa
 
-      - name: 📤 Upload to Firebase App Distribution
-        run: |
-          IPA_PATH=$(find ios/build/ipa -name "*.ipa" | head -n 1)
-          firebase appdistribution:distribute "$IPA_PATH" \
-            --app ${{ secrets.FIREBASE_APP_ID_IOS }} \
-            --token ${{ secrets.FIREBASE_AUTH_TOKEN }} \
-            --groups testers
+      # - name: 📦 Export IPA
+      #   run: |
+      #     cd ios
+      #     xcodebuild -exportArchive \
+      #       -archivePath $PWD/build/cicdreactnative.xcarchive \
+      #       -exportPath $PWD/build/ipa \
+      #       -exportOptionsPlist ExportOptions.plist
+      #     ls -R $PWD/build/ipa
+
+      # - name: 📤 Upload to Firebase App Distribution
+      #   run: |
+      #     IPA_PATH=$(find ios/build/ipa -name "*.ipa" | head -n 1)
+      #     firebase appdistribution:distribute "$IPA_PATH" \
+      #       --app ${{ secrets.FIREBASE_APP_ID_IOS }} \
+      #       --token ${{ secrets.FIREBASE_AUTH_TOKEN }} \
+      #       --groups testers
