@@ -38,3 +38,7 @@ jobs:
             --token ${{ secrets.FIREBASE_TOKEN }} \
             --groups "TESTERS_REELBOOK"
           echo "✅ Uploaded to Firebase App Distribution!"
+        env:
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}  
