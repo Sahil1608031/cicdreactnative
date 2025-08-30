@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-ios:
-    runs-on: macos-latest   # 👈 yaha ubuntu nahi chalega
+    runs-on: macos-latest
 
     steps:
       - name: 📥 Checkout repository
@@ -48,11 +48,12 @@ jobs:
             -archivePath $PWD/build/AwesomeProject.xcarchive \
             -exportPath $PWD/build/ipa \
             -exportOptionsPlist ExportOptions.plist
+          ls -R $PWD/build/ipa
 
       - name: 📤 Upload to Firebase App Distribution
         run: |
-          firebase appdistribution:distribute ios/build/ipa/AwesomeProject.ipa \
+          IPA_PATH=$(find ios/build/ipa -name "*.ipa" | head -n 1)
+          firebase appdistribution:distribute "$IPA_PATH" \
             --app ${{ secrets.FIREBASE_APP_ID_IOS }} \
             --token ${{ secrets.FIREBASE_AUTH_TOKEN }} \
             --groups testers
-
