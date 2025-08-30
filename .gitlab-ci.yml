@@ -14,8 +14,8 @@ install_dependencies:
     - echo "✅ Dependencies installed!"
   variables:
     RELEASE_KEY_ALIAS: $RELEASE_KEY_ALIAS
-    RELEASE_STORE_PASSWORD: "${RELEASE_STORE_PASSWORD}"
-    RELEASE_KEY_PASSWORD: "${RELEASE_KEY_PASSWORD}"
+    RELEASE_STORE_PASSWORD: $RELEASE_STORE_PASSWORD
+    RELEASE_KEY_PASSWORD: $RELEASE_KEY_PASSWORD
   script:
     - echo "📦 prettier checking..."
     - npm run prettier:check
@@ -28,8 +28,8 @@ install_dependencies:
     - echo "✅ test checked!"
     - echo "📦 Building Android Release APK..."
     - export RELEASE_KEY_ALIAS="$RELEASE_KEY_ALIAS"
-    - export RELEASE_STORE_PASSWORD="${RELEASE_STORE_PASSWORD}"
-    - export RELEASE_KEY_PASSWORD="${RELEASE_KEY_PASSWORD}"
+    - export RELEASE_STORE_PASSWORD="$RELEASE_STORE_PASSWORD"
+    - export RELEASE_KEY_PASSWORD="$RELEASE_KEY_PASSWORD"
     - cd android
     - ./gradlew assembleRelease
     - echo "✅ Release APK built!"
