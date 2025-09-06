@@ -14,7 +14,7 @@ import {
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
-
+  console.log('isDarkMode', isDarkMode);
 
   return (
     <SafeAreaProvider>
