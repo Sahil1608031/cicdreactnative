@@ -1,12 +1,14 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+echo "🔍 Running pre-commit checks..."
 
-echo "Running pre-commit checks..."
+# Prevent direct commits to main branch
+branch="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$branch" = "main" ]; then
+  echo "❌ Direct push to main is not allowed!"
+  echo "✅ Please create a PR instead."
+  exit 1
+fi
 
-npm run prettier:fix
-npm run prettier:check
-git add .
-npm run lint:fix
+npx lint-staged
 npm run test
 
 echo "✅ Pre-commit checks passed!"
