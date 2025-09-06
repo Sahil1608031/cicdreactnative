@@ -53,4 +53,4 @@ export const testAllRules = function (
     }
 
     return result; // missing explicit TS return type
-};
+ };
