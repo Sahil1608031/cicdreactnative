@@ -6,6 +6,7 @@
  */
 
 import { NewAppScreen } from '@react-native/new-app-screen';
+import { JSX } from 'react';
 import {
   StatusBar,
   StyleSheet,
@@ -18,9 +19,8 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-function App() {
-  const isDarkMode: any = useColorScheme() === 'dark';
-
+function App(): JSX.Element {
+  const isDarkMode: boolean = useColorScheme() === 'dark';
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -31,7 +31,7 @@ function App() {
   );
 }
 
-function AppContent() {
+function AppContent(): JSX.Element {
   const safeAreaInsets = useSafeAreaInsets();
 
   return (
