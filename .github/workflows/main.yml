@@ -52,7 +52,7 @@ jobs:
         run: |
           echo "🔍 Running SonarCloud scan..."
           npx sonar-scanner \
-            -Dsonar.projectKey=sahil1608031 \
+            -Dsonar.projectKey=Sahil1608031_cicdreactnative \
             -Dsonar.organization=sahil1608031 \
             -Dsonar.sources=src \
             -Dsonar.host.url=https://sonarcloud.io \
