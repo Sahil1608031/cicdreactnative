@@ -34,11 +34,11 @@ jobs:
           echo "✅ Prettier checked!"
 
       # ESLint check
-      # - name: ESLint check
-      #   run: |
-      #     echo "📦 ESLint checking..."
-      #     npm run lint:fix
-      #     echo "✅ ESLint checked!"
+      - name: ESLint check
+        run: |
+          echo "📦 ESLint checking..."
+          npm run lint:fix
+          echo "✅ ESLint checked!"
 
       # Run tests
       - name: Test check
