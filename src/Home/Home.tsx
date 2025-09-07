@@ -1,8 +1,7 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 //home compoent
 const Home = (): JSX.Element => {
-  const [data, setData] = useState<any>('');
 
   return (
     <View style={styles.container}>
