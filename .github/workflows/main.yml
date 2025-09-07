@@ -48,8 +48,8 @@ jobs:
           echo "✅ Test checked!"  
 
       # Run SonarCloud analysis
-      # - name: SonarCloud Scan
-      #   run: |
-      #     echo "🔍 Running SonarCloud scan..."
-      #     npx sonar-scanner
-      #     echo "✅ SonarCloud scan completed!"
+      - name: SonarCloud Scan
+        run: |
+          echo "🔍 Running SonarCloud scan..."
+          npx sonar-scanner
+          echo "✅ SonarCloud scan completed!"
