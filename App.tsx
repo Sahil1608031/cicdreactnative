@@ -1,9 +1,10 @@
 import { StyleSheet, View } from 'react-native';
-import React, { JSX } from 'react';
+import React, { JSX, useState } from 'react';
 import Home from './src/Home/Home';
 import Setting from './src/setting/Setting';
 
 const App = (): JSX.Element => {
+  const [data, setData] = useState<string>("");
   return (
     <View style={styles.container}>
       <Home />
