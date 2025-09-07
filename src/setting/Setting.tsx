@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Setting = () => {
+const Setting = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Text>Setting</Text>
