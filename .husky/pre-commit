@@ -9,6 +9,7 @@ echo "🔍 Running pre-commit checks..."
 # fi
 
 npx lint-staged
+npm run prettier:check
 npm run test
 
 echo "✅ Pre-commit checks passed!"

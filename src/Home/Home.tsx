@@ -2,7 +2,6 @@ import React, { JSX } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 //home compoent
 const Home = (): JSX.Element => {
-
   return (
     <View style={styles.container}>
       <Text>Home</Text>
